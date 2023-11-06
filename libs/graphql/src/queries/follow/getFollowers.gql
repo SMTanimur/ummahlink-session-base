@@ -1,0 +1,32 @@
+query GetFollowers($username:String!,$options: PaginateOptionArgs!, $query: FollowQueryArgs!) {
+  getFollowers(username: $username,option: $options, query: $query) {
+   docs{
+       avatar{
+        avatarUrl
+        avatarPublicId
+       }
+    email
+    id
+    isFollowing
+    name
+    username
+    lastActive
+    isActive
+    contact
+    birthday
+    bio
+    gender
+    __typename
+     }
+    __typename
+    limit
+    page
+    totalDocs
+    totalPages
+    pagingCounter
+    prevPage
+    hasNextPage
+    hasPrevPage
+    nextPage
+  }
+}

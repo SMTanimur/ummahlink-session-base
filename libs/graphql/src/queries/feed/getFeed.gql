@@ -1,0 +1,44 @@
+query GetFeed ($query:NewsFeedQueryArgs!,$option:GetFeedDto!) {
+getFeeds(query:$query,option: $option) {
+    docs{
+      author{
+        avatar{
+          avatarUrl
+          avatarPublicId
+          __typename
+
+        }
+        username
+        email
+        lastActive
+        isActive
+        id
+        name
+      }
+      commentsCount
+      content
+      createdAt
+      id
+      isLiked
+      isOwnPost
+      likesCount
+      photos{
+        photosUrl
+        photosPublicId
+        __typename
+      }
+      updatedAt
+    }
+    __typename
+    limit
+    page
+    totalDocs
+    totalPages
+    pagingCounter
+    prevPage
+    hasNextPage
+    hasPrevPage
+    nextPage
+    
+  }
+}

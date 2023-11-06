@@ -1,0 +1,42 @@
+query GetPosts ($username:String!,$query:NewsFeedQueryArgs!,$option:GetFeedDto!) {
+getPosts(username: $username,query:$query,option: $option) {
+    docs{
+      author{
+        avatar{
+          avatarUrl
+          avatarPublicId
+        }
+        username
+        email
+        isActive
+        lastActive
+        id
+        name
+      }
+      commentsCount
+      content
+      createdAt
+      id
+      isLiked
+      isOwnPost
+      likesCount
+      photos{
+        photosUrl
+        photosPublicId
+        __typename
+      }
+      updatedAt
+    }
+    __typename
+   hasNextPage
+   hasPrevPage
+   limit
+   nextPage
+   page
+   pagingCounter
+   prevPage
+   totalDocs
+   totalPages
+    
+  }
+}

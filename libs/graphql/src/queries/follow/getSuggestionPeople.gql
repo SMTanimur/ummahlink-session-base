@@ -1,0 +1,30 @@
+query GetSuggestionPeople($options: PaginateOptionArgs!, $query: FollowQueryArgs!) {
+ getSuggestionPeople(option: $options, query: $query){
+  docs{
+    avatar{
+      avatarUrl
+      avatarPublicId
+    }
+    email
+    id
+    isFollowing
+    lastActive
+    isActive
+     name
+     username
+      __typename
+  }
+  __typename
+    limit
+    page
+    totalDocs
+    totalPages
+    pagingCounter
+    prevPage
+    hasNextPage
+    hasPrevPage
+    nextPage
+
+  
+ }
+}

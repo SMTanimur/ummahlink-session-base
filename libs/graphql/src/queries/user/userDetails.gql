@@ -1,0 +1,28 @@
+query UserProfile($username: String!) {
+  user(username: $username) {
+    username
+    name
+    avatar {
+      avatarUrl
+      avatarPublicId
+    }
+    coverPicture {
+      coverUrl
+      coverPublicId
+    }
+    bio
+    birthday
+    contact
+    isActive
+    lastActive
+    gender
+    name
+    email
+    followersCount
+    followingCount
+    id
+    isFollowing
+    isOwnProfile
+    __typename
+  }
+}

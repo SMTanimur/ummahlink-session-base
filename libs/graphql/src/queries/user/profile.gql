@@ -1,0 +1,22 @@
+query me {
+  me {
+    avatar{
+      avatarUrl
+      avatarPublicId
+    }
+    username
+    name
+    isActive
+    lastActive
+    email
+    coverPicture{
+      coverUrl
+      coverPublicId
+    }
+    _id
+    bio
+    birthday
+    contact
+    gender
+  }
+}

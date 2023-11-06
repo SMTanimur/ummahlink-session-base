@@ -1,0 +1,644 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type MessageResponse {
+  message: String!
+}
+
+type FriendRequest {
+  id: ID!
+  user: User
+  target: User
+}
+
+type AvatarImageInfo {
+  avatarUrl: String
+  avatarPublicId: String
+}
+
+type CoverImageInfo {
+  coverUrl: String
+  coverPublicId: String
+}
+
+type User {
+  email: String!
+  name: String!
+  birthday: DateTime
+  gender: EGender
+  bio: String
+  contact: String
+  username: String!
+  avatar: AvatarImageInfo!
+  coverPicture: CoverImageInfo
+  friends: User
+  friendRequests: [FriendRequest!]
+  password: String!
+  role: String!
+  isActive: Boolean!
+  lastActive: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+enum EGender {
+  male
+  female
+  unspecified
+}
+
+type UserWithoutPassword {
+  email: String!
+  name: String!
+  birthday: DateTime
+  gender: EGender
+  bio: String
+  contact: String
+  username: String!
+  avatar: AvatarImageInfo!
+  coverPicture: CoverImageInfo
+  friends: User
+  friendRequests: [FriendRequest!]
+  role: String!
+  isActive: Boolean!
+  lastActive: DateTime!
+}
+
+type ProfileInformation {
+  id: ID!
+  username: String!
+  name: String!
+  birthday: DateTime
+  gender: String
+  bio: String
+  isActive: Boolean
+  lastActive: DateTime
+  contact: String
+  avatar: AvatarImage
+  email: String!
+  coverPicture: CoverImage
+  followingCount: Float
+  followersCount: Float
+  isFollowing: Boolean!
+  isOwnProfile: Boolean!
+}
+
+type AvatarImage {
+  avatarUrl: String
+  avatarPublicId: String
+}
+
+type CoverImage {
+  coverUrl: String
+  coverPublicId: String
+}
+
+type IUser {
+  _id: ID!
+  username: String!
+  name: String!
+  isActive: Boolean!
+  lastActive: DateTime!
+  birthday: DateTime
+  gender: String
+  bio: String
+  contact: String
+  avatar: AvatarImage
+  email: String
+  coverPicture: CoverImage
+  isFollowing: Boolean!
+}
+
+type PhotosImageInfo {
+  photosUrl: String
+  photosPublicId: String
+}
+
+type Post {
+  _author_id: ID
+  content: String
+  photos: [PhotosImageInfo!]
+  likes: [User!]
+  comments: [User!]
+
+  """Created At"""
+  createdAt: DateTime!
+
+  """Updated At"""
+  updatedAt: DateTime!
+}
+
+type Message {
+  id: ID!
+  from: ID
+  to: ID
+  text: String!
+  seen: Boolean
+  createdAt: DateTime!
+}
+
+type MessageUser {
+  id: ID
+  username: String!
+  avatar: AvatarImage
+  name: String!
+  lastActive: DateTime
+  isActive: Boolean
+}
+
+type MessagePaginate {
+  text: String!
+  createdAt: DateTime
+  from: MessageUser!
+  to: MessageUser!
+  seen: Boolean!
+  unseenCount: Boolean!
+  isOwnMessage: Boolean!
+  id: String!
+}
+
+type MessagePagination {
+  docs: [MessagePaginate]
+  totalDocs: Float!
+  limit: Float!
+  page: Float!
+  totalPages: Float!
+  hasNextPage: Boolean!
+  hasPrevPage: Boolean!
+  nextPage: Float
+  prevPage: Float
+  pagingCounter: Float!
+}
+
+type NotificationResponse {
+  state: Boolean!
+}
+
+type NotificationCount {
+  count: Int!
+}
+
+type ReadCountResponse {
+  state: Boolean!
+}
+
+type Author {
+  id: ID
+  username: String!
+  isActive: Boolean
+  lastActive: DateTime
+  email: String!
+  avatar: AvatarImage!
+  name: String!
+}
+
+type NewsFeedPaginate {
+  photos: [PhotosImageInfo!]
+  content: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  author: Author
+  isLiked: Boolean!
+  isOwnPost: Boolean!
+  commentsCount: Float!
+  likesCount: Float!
+  id: String
+}
+
+type NewsFeedPagination {
+  docs: [NewsFeedPaginate]
+  totalDocs: Float!
+  limit: Float!
+  page: Float!
+  totalPages: Float!
+  hasNextPage: Boolean!
+  hasPrevPage: Boolean!
+  nextPage: Float
+  prevPage: Float
+  pagingCounter: Float!
+}
+
+type CommentAuthor {
+  id: ID
+  username: String!
+  email: String!
+  avatar: AvatarImage
+  name: String!
+}
+
+type CommentPaginate {
+  body: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  author: CommentAuthor!
+  isLiked: Boolean
+  isPostOwner: Boolean!
+  isOwnComment: Boolean!
+  isEdited: Boolean
+  likesCount: Int!
+  depth: Int!
+  replyCount: Int!
+  id: String
+  post_id: ID
+}
+
+type CommentPagination {
+  docs: [CommentPaginate]
+  totalDocs: Float!
+  limit: Float!
+  page: Float!
+  totalPages: Float!
+  hasNextPage: Boolean!
+  hasPrevPage: Boolean!
+  nextPage: Float
+  prevPage: Float
+  pagingCounter: Float!
+}
+
+type NotificationUser {
+  username: String!
+  avatar: AvatarImage!
+  name: String!
+}
+
+type NotificationPaginate {
+  type: NotificationType!
+  id: String!
+  target: NotificationUser!
+  initiator: NotificationUser!
+  unread: Boolean!
+  link: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+enum NotificationType {
+  like
+  follow
+  commentLike
+  comment
+  reply
+}
+
+type NotificationPagination {
+  docs: [NotificationPaginate]
+  totalDocs: Float!
+  limit: Float!
+  page: Float!
+  totalPages: Float!
+  hasNextPage: Boolean!
+  hasPrevPage: Boolean!
+  nextPage: Float
+  prevPage: Float
+  pagingCounter: Float!
+}
+
+type UserResponse {
+  username: String!
+  avatar: String!
+}
+
+type FriendRequestResponse {
+  target: UserResponse!
+  user: UserResponse!
+}
+
+type Pagination {
+  username: String
+  name: String!
+  avatar: AvatarImage!
+  birthday: DateTime
+  gender: String
+  bio: String
+  isActive: Boolean
+  contact: String
+  id: String!
+  email: String!
+  lastActive: DateTime
+  isFollowing: Boolean!
+}
+
+type FollowPagination {
+  docs: [Pagination]
+  totalDocs: Float!
+  limit: Float!
+  page: Float!
+  totalPages: Float!
+  hasNextPage: Boolean!
+  hasPrevPage: Boolean!
+  nextPage: Float
+  prevPage: Float
+  pagingCounter: Float!
+}
+
+type LoginResponse {
+  message: String!
+}
+
+input AvatarImageInput {
+  avatarUrl: String
+  avatarPublicId: String
+}
+
+input CoverImageInput {
+  coverUrl: String
+  coverPublicId: String
+}
+
+input PhotosImageInput {
+  photosUrl: String
+  photosPublicId: String
+}
+
+type Query {
+  user(username: String!): ProfileInformation
+  searchUser(query: SearchDto!, option: PaginateOptionArgs!): [IUser!]
+  getMessages(query: MessageQueryArgs!, option: PaginateOptionArgs!): MessagePagination
+  getTargetMessage(query: MessageReadQueryArgs!, option: PaginateOptionArgs!): MessagePagination
+  getUnreadMessageCount(query: MessageQueryArgs!): NotificationCount!
+  getFeeds(query: NewsFeedQueryArgs!, option: GetFeedDto!): NewsFeedPagination!
+  getComments(query: CommentsQueryArgs!, option: PaginateOptionArgs!): CommentPagination
+  getReplies(query: ReplyQueryArgs!, option: PaginateOptionArgs!): CommentPagination
+  getNotifications(query: NotificationQueryArgs!, options: PaginateOptionArgs!): NotificationPagination!
+  getNotificationCount(query: NotificationCountQueryArgs!): NotificationCount!
+  post(postId: ID!): Post!
+  getPosts(username: String!, query: NewsFeedQueryArgs!, option: GetFeedDto!): NewsFeedPagination!
+  getPostLikes(query: LikesQueryArgs!, option: PaginateOptionArgs!): [GetLikeResponse!]!
+  getFollowers(username: String!, query: FollowQueryArgs!, option: PaginateOptionArgs!): FollowPagination!
+  getFollowing(username: String!, query: FollowQueryArgs!, option: PaginateOptionArgs!): FollowPagination!
+  getSuggestionPeople(query: FollowQueryArgs!, option: PaginateOptionArgs!): FollowPagination
+  me: IUser!
+}
+
+input SearchDto {
+  keyword: String!
+  user: UserInputType
+}
+
+input UserInputType {
+  email: String!
+  name: String!
+  birthday: DateTime
+  gender: EGender
+  bio: String
+  contact: String
+  username: String!
+  avatar: AvatarImageInput!
+  coverPicture: CoverImageInput
+  friends: UserInputType
+  friendRequests: [FriendRequestInputType!] = []
+  password: String!
+  role: String!
+  isActive: Boolean!
+  lastActive: DateTime!
+}
+
+input FriendRequestInputType {
+  user: UserInputType
+  target: UserInputType
+}
+
+input PaginateOptionArgs {
+  select: String
+  sort: String
+  skip: Float
+  lean: Boolean
+  leanWithId: Boolean
+  offset: Float
+  limit: Float = 10
+  page: Float = 1
+  pagination: Boolean
+  allowDiskUse: Boolean
+  forceCountFn: Boolean
+  useEstimatedCount: Boolean
+}
+
+input MessageQueryArgs {
+  user: UserInputType
+}
+
+input MessageReadQueryArgs {
+  user: UserInputType
+  from_id: String!
+}
+
+input NewsFeedQueryArgs {
+  user: UserInputType
+}
+
+input GetFeedDto {
+  select: String
+  sort: String
+  skip: Float
+  lean: Boolean
+  leanWithId: Boolean
+  offset: Float
+  limit: Float = 10
+  page: Float = 1
+  pagination: Boolean
+  allowDiskUse: Boolean
+  forceCountFn: Boolean
+  useEstimatedCount: Boolean
+  orderBy: QueryPostOrderByColumn = CREATED_AT
+  sortedBy: SortOrder = DESC
+}
+
+enum QueryPostOrderByColumn {
+  CREATED_AT
+  RATING
+  ORDERS
+  UPDATED_AT
+}
+
+enum SortOrder {
+  ASC
+  DESC
+}
+
+input CommentsQueryArgs {
+  user: UserInputType
+  postId: ID!
+}
+
+input ReplyQueryArgs {
+  user: UserInputType
+  comment_id: ID!
+  post_id: ID!
+}
+
+input NotificationQueryArgs {
+  user: UserInputType
+  type: String
+  unread: Boolean
+}
+
+input NotificationCountQueryArgs {
+  user: UserInputType
+}
+
+type GetLikeResponse {
+  username: String!
+  _id: ID!
+  avatar: AvatarImage!
+  name: String!
+  isFollowing: Boolean!
+}
+
+input LikesQueryArgs {
+  user: ID
+  postId: ID
+  commentId: ID
+}
+
+input FollowQueryArgs {
+  user: UserInputType
+  type: String
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): String!
+  updateUser(input: UpdateUserInput!, username: String!): MessageResponse!
+  createMessage(createMessageInput: CreateMessageInput!): MessageResponse!
+  updateMessageRead(updateMessageRead: MessageReadQueryArgs!): ReadCountResponse!
+  createComment(createCommentInput: CreateCommentInput!): MessageResponse!
+  updateComment(updateCommentInput: UpdateCommentInput!): MessageResponse!
+  createCommentReply(createReplyInput: CreateReplyInput!): MessageResponse!
+  deleteComment(deleteCommentInput: DeleteCommentInput!): MessageResponse!
+  likeOrUnlikeComment(likeOrUnlikeCommentInput: CreatePostOrCommentLikeInput!): MessageResponse!
+  updateNotification(updateNotificationArgs: NotificationUpdateArgs!): NotificationResponse!
+  markNotification(markNotificationArgs: NotificationCountQueryArgs!): NotificationResponse!
+  createPost(createPostInput: CreatePostInput!): MessageResponse!
+  updatePost(updatePostInput: UpdatePostInput!): MessageResponse!
+  deletePost(deletePostInput: DeletePostInput!): MessageResponse!
+  likeOrUnlikePost(likeOrUnlikePostInput: CreatePostOrCommentLikeInput!): MessageResponse!
+  followUser(followOrUnFollowInput: FollowOrUnFollowInput!): MessageResponse!
+  unFollowUser(followOrUnFollowInput: FollowOrUnFollowInput!): MessageResponse!
+  login(loginInput: LoginInput!): LoginResponse!
+  logout: MessageResponse!
+  createFriendRequest(createFriendRequestInput: CreateFriendRequestInput!): FriendRequestResponse!
+  closeFriendRequest(closeRequestInput: CloseRequestInput!): UserWithoutPassword!
+}
+
+input CreateUserInput {
+  email: String!
+  name: String!
+  username: String!
+  password: String!
+}
+
+input UpdateUserInput {
+  email: String
+  name: String
+  birthday: DateTime
+  gender: EGender
+  bio: String
+  contact: String
+  username: String
+  avatar: AvatarImageInput
+  coverPicture: CoverImageInput
+  friends: UserInputType
+  friendRequests: [FriendRequestInputType!] = []
+  password: String
+  role: String
+  isActive: Boolean
+  lastActive: DateTime
+}
+
+input CreateMessageInput {
+  text: String!
+  user_id: String!
+  user: UserInputType
+}
+
+input CreateCommentInput {
+  _post_id: ID
+  body: String!
+  authId: UserInputType
+}
+
+input UpdateCommentInput {
+  id: ID
+  _post_id: ID
+  parent: ID
+  parents: [ID!]
+  body: String
+  depth: Float
+  authId: UserInputType
+  isEdited: Boolean
+  user: ID
+  commentId: ID!
+}
+
+input CreateReplyInput {
+  _post_id: ID!
+  userId: ID
+  commentId: ID!
+  body: String!
+}
+
+input DeleteCommentInput {
+  commentId: ID!
+  userID: ID
+}
+
+input CreatePostOrCommentLikeInput {
+  user: ID
+  postId: ID
+  comment_id: ID
+  type: String
+}
+
+input NotificationUpdateArgs {
+  notifiId: ID!
+}
+
+input CreatePostInput {
+  _author_id: ID
+  content: String
+  photos: [PhotosImageInput!]
+}
+
+input UpdatePostInput {
+  _author_id: ID
+  content: String
+  photos: [PhotosImageInput!]
+  likes: [UserInputType!]
+  comments: [UserInputType!]
+
+  """Created At"""
+  createdAt: DateTime
+
+  """Updated At"""
+  updatedAt: DateTime
+  user: ID
+  postId: ID!
+}
+
+input DeletePostInput {
+  user: ID
+  postId: ID!
+}
+
+input FollowOrUnFollowInput {
+  userId: ID
+  follow_ID: ID!
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+input CreateFriendRequestInput {
+  user: ID
+  target: ID
+}
+
+input CloseRequestInput {
+  target: ID
+  status: String!
+}
