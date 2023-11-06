@@ -32,8 +32,8 @@ const SignedUser: FC = () => {
   const Avatar = () => (
     <Image
       src={
-        currentProfile?.avatar.avatarUrl
-          ? currentProfile?.avatar.avatarUrl
+        currentProfile?.avatar?.avatarUrl
+          ? currentProfile?.avatar?.avatarUrl
           : UserAvatarUrl
       }
       className="h-8 w-8 cursor-pointer rounded-full border dark:border-gray-700"
